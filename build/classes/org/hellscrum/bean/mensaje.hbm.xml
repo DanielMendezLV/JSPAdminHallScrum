@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="org.hellscrum.bean.mensaje" table="mensaje">
+		<id name="idmensaje" type="java.lang.Integer">
+			<column name="idmensaje"></column>
+			<generator class="assigned"></generator>
+		</id>
+		<property name="idreunion" type="java.lang.Integer">
+			<column name="idreunion" />
+		</property>
+		<property name="texto" type="java.lang.String">
+			<column name="texto" />
+		</property>
+	</class>
+</hibernate-mapping>

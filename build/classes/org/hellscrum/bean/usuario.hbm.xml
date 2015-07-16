@@ -1,0 +1,26 @@
+<?xml version="1.0" ?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="org.hellscrum.bean.usuario" table="usuario">
+		<id name="idUsuario" type="java.lang.Integer">
+			<column name="idUsuario"></column>
+			<generator class="assigned"></generator>
+		</id>
+		<property name="nombre" type="java.lang.String">
+			<column name="nombre" />
+		</property>
+		<property name="apellido" type="java.lang.String">
+			<column name="apellido" />
+		</property>
+		<property name="nickname" type="java.lang.String">
+			<column name="nickname" />
+		</property>
+		<property name="contrasena" type="java.lang.String">
+			<column name="contrasena" />
+		</property>
+		<property name="idRol" type="java.lang.Integer">
+			<column name="idRol" />
+		</property>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="org.hellscrum.bean.meta" table="meta">
+		<id name="idmeta" type="java.lang.Integer">
+			<column name="idmeta"></column>
+			<generator class="assigned"></generator>
+		</id>
+		<property name="descripcion" type="java.lang.String">
+			<column name="descripcion" />
+		</property>
+		<property name="estado" type="java.lang.Boolean">
+			<column name="estado" />
+		</property>
+		<property name="idfase" type="java.lang.Integer">
+			<column name="idfase" />
+		</property>
+	</class>
+</hibernate-mapping>

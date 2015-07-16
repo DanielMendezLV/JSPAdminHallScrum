@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+                                         "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+	     <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+        <property name="hibernate.connection.username">postgres</property>
+        <property name="hibernate.connection.password">admin</property>
+        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/DB_HallScrum</property>
+
+		
+	    <property name="show_sql">true</property>
+	    <property name="hibernate.hbm2ddl.auto">validate</property>
+	    <property name="hibernate.connection.charSet">utf-8</property> 
+	    
+		<property name="current_session_context_class">thread</property>
+		
+      	<property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
+      	<property name="transaction.factory_class">
+             org.hibernate.transaction.JDBCTransactionFactory
+	    </property>
+	    <property name="hibernate.cache.provider_class">
+	             org.hibernate.cache.HashtableCacheProvider
+	    </property>
+	    
+	 	<mapping class="proyecto" package="org.hellscrum.bean" resource="org/hellscrum/bean/proyecto.hbm.xml"/>	
+		<mapping class="meta" package="org.hellscrum.bean" resource="org/hellscrum/bean/meta.hbm.xml"/>	
+		<mapping class="fase" package="org.hellscrum.bean" resource="org/hellscrum/bean/fase.hbm.xml"/>	
+		<mapping class="usuario" package="org.hellscrum.bean" resource="org/hellscrum/bean/usuario.hbm.xml"/> 
+		<mapping class="rol" package="org.hellscrum.bean" resource="org/hellscrum/bean/rol.hbm.xml"/>	
+		<mapping class="equipo" package="org.hellscrum.bean" resource="org/hellscrum/bean/equipo.hbm.xml"/>	
+		<mapping class="reunion" package="org.hellscrum.bean" resource="org/hellscrum/bean/reunion.hbm.xml"/>	
+		<mapping class="mensaje" package="org.hellscrum.bean" resource="org/hellscrum/bean/mensaje.hbm.xml"/>	
+		 	
+	</session-factory>
+</hibernate-configuration>

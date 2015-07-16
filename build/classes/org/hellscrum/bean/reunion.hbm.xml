@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="org.hellscrum.bean.reunion" table="reunion">
+		<id name="idreunion" type="java.lang.Integer">
+			<column name="idreunion"></column>
+			<generator class="assigned"></generator>
+		</id>
+		
+		<property name="fecha" type="java.sql.Date">
+			<column name="fecha" />
+		</property>
+		<property name="hora" type="java.lang.String">
+			<column name="hora" />
+		</property>
+		<property name="idequipo" type="java.lang.Integer">
+			<column name="idequipo" />
+		</property>
+	</class>
+</hibernate-mapping>
