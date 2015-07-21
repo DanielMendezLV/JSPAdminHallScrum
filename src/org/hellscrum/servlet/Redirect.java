@@ -21,6 +21,17 @@ public class Redirect extends HttpServlet{
 		if(Manejador.getInstancia().getUsuarioAutenticado()){
 
 			String go = peticion.getParameter("go");
+			Integer paginacion = 0;
+			try{
+				paginacion= Integer.parseInt(peticion.getParameter("pagin"));
+				if (paginacion < 0 ){
+					paginacion = 0;
+				}
+				
+				peticion.setAttribute("pagin", paginacion);
+			}catch(Exception e){
+				paginacion = 0;
+			}
 			if ( go.equals("1")){
 				peticion.setAttribute("listadoRol", Manejador.getInstancia().listaRol());
 				despachador=peticion.getRequestDispatcher("rol.jsp");				

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="org.hellscrum.bean.usuario_equipo" table="usuario_equipo">
+		<id name="idusuario" type="java.lang.Integer">
+			<column name="idusuario"></column>
+		</id>
+		<property name="idequipo" type="java.lang.Integer">
+			<column name="idequipo" />
+		</property>
+		<property name="idrol" type="java.lang.Integer">
+			<column name="idrol" />
+		</property>
+		
+	</class>
+</hibernate-mapping>

@@ -6,7 +6,7 @@
 	     <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
         <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
         <property name="hibernate.connection.username">postgres</property>
-        <property name="hibernate.connection.password">admin</property>
+        <property name="hibernate.connection.password">Motherrosario</property>
         <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/DB_HallScrum</property>
 
 		
@@ -32,6 +32,7 @@
 		<mapping class="equipo" package="org.hellscrum.bean" resource="org/hellscrum/bean/equipo.hbm.xml"/>	
 		<mapping class="reunion" package="org.hellscrum.bean" resource="org/hellscrum/bean/reunion.hbm.xml"/>	
 		<mapping class="mensaje" package="org.hellscrum.bean" resource="org/hellscrum/bean/mensaje.hbm.xml"/>	
+		<mapping class="usuario_equipo" package="org.hellscrum.bean" resource="org/hellscrum/bean/usuario_equipo.hbm.xml"/>	
 		 	
 	</session-factory>
 </hibernate-configuration>

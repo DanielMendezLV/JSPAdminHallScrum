@@ -14,13 +14,27 @@ public class Prueba {
 	
 	public static void main(String[] args) {
 		
+		int cont=0;
+		for(Object obj:Conexion.getInstancia().hacerConsulta("From usuario_equipo")){
+			
+			usuario_equipo ue=(usuario_equipo)obj;
+			System.out.println(cont + " "+ ue.getIdusuario() + " " + ue.getIdequipo() + " " + ue.getIdrol());
+			ue.getIdequipo();
+			cont++;
+		}
+
+		
 		// TODO Auto-generated method stub
-		for(Object obj:Conexion.getInstancia().hacerConsulta("From mensaje")){
-			mensaje usr=(mensaje)obj;
-			System.out.println("fecha " +usr.getTexto());
+		usuario user=(usuario)Conexion.getInstancia().hacerConsulta("From usuario where idUsuario = 1").get(0);
+		System.out.println(user.getNombre());
+
+		/*for(Object obj:Conexion.getInstancia().hacerConsulta("From usuario where idUsuario = 1")){
+			usuario usr=(usuario)obj;
+			
+			System.out.println( " s " +usr.toString());
 			
 		}
-		/*
+		
 		for(Object obj:Conexion.getInstancia().hacerConsulta("From equipo")){
 			equipo usr=(equipo)obj;
 

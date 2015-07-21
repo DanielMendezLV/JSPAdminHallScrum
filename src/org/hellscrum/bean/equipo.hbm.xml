@@ -10,5 +10,8 @@
 		<property name="nombre" type="java.lang.String">
 			<column name="nombre" />
 		</property>
+		<property name="mykey" type="java.lang.String">
+			<column name="mykey" />
+		</property>
 	</class>
 </hibernate-mapping>

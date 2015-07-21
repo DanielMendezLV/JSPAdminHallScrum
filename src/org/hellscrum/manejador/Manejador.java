@@ -49,6 +49,36 @@ public class Manejador {
 		
 	}
 	
+	public usuario getUsuario(String id){
+		usuario usu=(usuario)Conexion.getInstancia().hacerConsulta("From usuario where idUsuario = "+id).get(0);
+		
+		return usu;
+	}
+	
+	public equipo getEquipo(String id){
+		equipo equip = (equipo)Conexion.getInstancia().hacerConsulta("From equipo where idequipo = "+id).get(0);
+		return equip;
+	}
+	
+	public proyecto getProyeco(String id){
+		proyecto pr=(proyecto)Conexion.getInstancia().hacerConsulta("From proyecto where idproyecto = "+id).get(0);
+		return pr;
+	}
+	
+	public fase getFase(String id){
+		fase fs= (fase)Conexion.getInstancia().hacerConsulta("From fase where idfase="+id).get(0);
+		return fs;		
+	}
+	
+	public meta getMeta(String id){
+		meta mt= (meta)Conexion.getInstancia().hacerConsulta("From meta where idmeta="+id).get(0);
+		return mt;
+	}
+	
+	public mensaje getMensaje(String id){
+		mensaje msg = (mensaje)Conexion.getInstancia().hacerConsulta("From mensaje where idmensaje="+id).get(0);
+		return msg;
+	}
 	
 	public boolean getUsuarioAutenticado(){
 		if(UsuarioAutenticado == null){
@@ -64,7 +94,7 @@ public class Manejador {
 				usuario usr = (usuario)obj;
 				rol rl= null;
 				rl=(rol)Conexion.getInstancia().hacerConsulta("From rol u where u.idRol ="+usr.getIdRol()).get(0);
-			UserList.add(new UsuarioD(usr.getIdUsuario(),usr.getNombre(),usr.getApellido(),usr.getNickname(),usr.getContrasena(),rl.getNombre()));
+			UserList.add(new UsuarioD(usr.getIdUsuario(),usr.getNombre(),usr.getApellido(),usr.getNickname(),usr.getContrasena(),rl.getNombre(),usr.getIdRol()));
 		}
 		return UserList;
 	}
@@ -141,26 +171,13 @@ public class Manejador {
 			equipo eq=(equipo)obj;
 			ArrayList<detalleEquipo> detalle = new ArrayList<detalleEquipo>();
 			
-			ResultSet resultado=ConexionWitoutHibernate.getInstancia().obtenerConsulta(""+
-					"select Equipo.idEquipo as id, Usuario.nombre as Usuario, Equipo.nombre as Equipo, rol.nombre as Rol From Usuario "+
-					"	INNER JOIN Usuario_equipo on Usuario_Equipo.idUsuario = Usuario.idUsuario"+
-					"	INNER JOIN equipo on Usuario_Equipo.idEquipo = Equipo.idEquipo"+
-					"	INNER JOIN Rol on Usuario_Equipo.idRol = Rol.idRol where Equipo.idEquipo = "+eq.getIdequipo());
-							try {
-								while (resultado.next()) {
-									detalle.add(new detalleEquipo(resultado.getString("Usuario"),resultado.getString("Rol")));
-								}
-							} catch (SQLException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							}
-						
+			
 			ArrayList<proyecto> proyectlist= new ArrayList<proyecto>();
 			for(Object objt:Conexion.getInstancia().hacerConsulta("From proyecto u where u.idequipo ="+ eq.getIdequipo())){
 				proyecto pr =(proyecto)objt;
 				proyectlist.add(pr);
 			}				
-			ListaEquipo.add(new Equips(eq.getIdequipo(),proyectlist,detalle,eq.getNombre()));
+			ListaEquipo.add(new Equips(eq.getIdequipo(),proyectlist,detalle,eq.getNombre(),eq.getMykey()));
 
 			
 		}
@@ -187,5 +204,69 @@ public class Manejador {
 			ListaProyecto.add(new ProyectoD(pr.getIdproyecto(),pr.getNombre(),pr.getFechacreacion(),pr.getIdequipo(),listafase));
 		}
 		return ListaProyecto;
+	}
+	
+	public void UpdateRol(String id,String nombre){
+		rol rl=(rol)Conexion.getInstancia().hacerConsulta("From rol where idrol = "+id).get(0);
+		rl.setNombre(nombre);
+		Conexion.getInstancia().modificar(rl);
+	}
+	
+	public void CreateUsuario(String nombre, String apellido, String nick, String contrasena){
+		usuario usu = new usuario();
+		int id=0;
+		for(Object obj:Conexion.getInstancia().hacerConsulta("From usuario")){
+			usuario user = (usuario)obj;
+			if(user.getIdUsuario() > id){
+				id = user.getIdUsuario();
+			}
+		}
+		id++;
+		usu.setIdUsuario(id);
+		usu.setNombre(nombre);
+		usu.setApellido(apellido);
+		usu.setNickname(nick);
+		usu.setContrasena(contrasena);
+		usu.setIdRol(1);
+		Conexion.getInstancia().agregar(usu);
+	}
+	
+	public void UpdateUsuario(String id,String nombre, String apellido, String nick, String contrasena){
+		usuario usu = (usuario)Conexion.getInstancia().hacerConsulta("From usuario where idusuario = "+id).get(0);
+		usu.setNombre(nombre);
+		usu.setApellido(apellido);
+		usu.setNickname(nick);
+		usu.setContrasena(contrasena);
+		Conexion.getInstancia().modificar(usu);
+	}
+	
+	public void UpdateEquipo(String id, String nombre){
+		equipo eq = (equipo)Conexion.getInstancia().hacerConsulta("From equipo where idequipo="+id).get(0);
+		eq.setNombre(nombre);
+		Conexion.getInstancia().modificar(eq);
+	}
+	
+	public void UpdateProyecto(String id,String nombre){
+		proyecto pr = (proyecto)Conexion.getInstancia().hacerConsulta("From proyecto where idproyecto="+id).get(0);
+		pr.setNombre(nombre);
+		Conexion.getInstancia().modificar(pr);
+	}
+	
+	public void UpdateFase(String id,String nombre){
+		fase fs = (fase)Conexion.getInstancia().hacerConsulta("From fase where idfase="+id).get(0);
+		fs.setNombre(nombre);
+		Conexion.getInstancia().modificar(fs);
+	}
+	
+	public void UpdateMeta(String id,String descripcion){
+		meta mt= (meta)Conexion.getInstancia().hacerConsulta("From meta where idmeta="+id).get(0);
+		mt.setDescripcion(descripcion);
+		Conexion.getInstancia().modificar(mt);
+	}
+	
+	public void UpdateMensaje(String id,String texto){
+		mensaje msg=(mensaje)Conexion.getInstancia().hacerConsulta("From mensaje where idmensaje="+id).get(0);
+		msg.setTexto(texto);
+		Conexion.getInstancia().modificar(msg);
 	}
 }

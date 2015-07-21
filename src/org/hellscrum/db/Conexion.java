@@ -122,7 +122,12 @@ public class Conexion {
 	public usuario autenticarUsuario(String usr, String pass){
 		usuario usuario=null;
 		usuario=(usuario)this.hacerConsulta("From usuario u where u.nickname='"+usr+"' and u.contrasena='"+pass+"'").get(0);
-		return usuario;
+		if (usuario.getIdRol() == 1){
+			if(usuario.getContrasena().equals(pass)){
+				return usuario;
+			}
+		}
+		return null;
 	}
 	
 	

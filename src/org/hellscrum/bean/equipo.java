@@ -2,14 +2,17 @@ package org.hellscrum.bean;
 
 public class equipo {
 
-	public equipo(Integer idequipo, String nombre) {
-		super();
-		this.idequipo = idequipo;
-		this.nombre = nombre;
-	}
+
+	
 	public equipo() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+	public equipo(Integer idequipo, String nombre, String mykey) {
+		super();
+		this.idequipo = idequipo;
+		this.nombre = nombre;
+		this.mykey = mykey;
 	}
 	public Integer getIdequipo() {
 		return idequipo;
@@ -23,6 +26,13 @@ public class equipo {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+	public String getMykey() {
+		return mykey;
+	}
+	public void setMykey(String mykey) {
+		this.mykey = mykey;
+	}
 	public Integer idequipo;
 	public String nombre;
+	public String mykey;
 }

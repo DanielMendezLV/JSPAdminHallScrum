@@ -2,13 +2,14 @@ package org.hellscrum.detalle;
 
 public class UsuarioD {
 	public UsuarioD(Integer idUsuario, String nombre, String apellido,
-			String nickname, String contrasena, String rol) {
+			String nickname, String contrasena, String rol, Integer idRol) {
 		super();
 		this.idUsuario = idUsuario;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.nickname = nickname;
 		this.contrasena = contrasena;
+		this.idRol = idRol;
 		this.rol = rol;
 	}
 	public UsuarioD() {
@@ -57,4 +58,11 @@ public class UsuarioD {
 	public String nickname;
 	public String contrasena;
 	public String rol;
+	public Integer idRol;
+	public Integer getIdRol() {
+		return idRol;
+	}
+	public void setIdRol(Integer idRol) {
+		this.idRol = idRol;
+	}
 }

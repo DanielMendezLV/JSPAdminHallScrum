@@ -20,6 +20,15 @@
   </servlet-mapping>
   
   <servlet>
+    <servlet-name>Create</servlet-name>
+    <servlet-class>org.hellscrum.servlet.Create</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Create</servlet-name>
+    <url-pattern>/Create.do</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
     <servlet-name>Redirect</servlet-name>
     <servlet-class>org.hellscrum.servlet.Redirect</servlet-class>
   </servlet>
@@ -27,6 +36,34 @@
     <servlet-name>Redirect</servlet-name>
     <url-pattern>/Redirect.do</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>Eliminar</servlet-name>
+    <servlet-class>org.hellscrum.servlet.Eliminar</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Eliminar</servlet-name>
+    <url-pattern>/Eliminar.do</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>Update</servlet-name>
+    <servlet-class>org.hellscrum.servlet.Update</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Update</servlet-name>
+    <url-pattern>/Update.do</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>redUpdate</servlet-name>
+    <servlet-class>org.hellscrum.servlet.redUpdate</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>redUpdate</servlet-name>
+    <url-pattern>/redUpdate.do</url-pattern>
+  </servlet-mapping>
+  
   
   <servlet>
     <servlet-name>Logout</servlet-name>

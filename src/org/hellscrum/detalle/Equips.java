@@ -6,15 +6,17 @@ import org.hellscrum.bean.proyecto;
 
 public class Equips {
 	
+	
+
 	public Equips(Integer idEquipo, ArrayList<proyecto> proyectList,
-			ArrayList<detalleEquipo> detEquipo, String equipo) {
+			ArrayList<detalleEquipo> detEquipo, String equipo, String mykey) {
 		super();
 		this.idEquipo = idEquipo;
 		this.proyectList = proyectList;
 		this.detEquipo = detEquipo;
 		this.equipo = equipo;
+		this.mykey = mykey;
 	}
-
 	public Equips() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -48,5 +50,13 @@ public class Equips {
 	public ArrayList<proyecto> proyectList;
 	public ArrayList<detalleEquipo> detEquipo;
 	public String equipo;
+	public String getMykey() {
+		return mykey;
+	}
+
+	public void setMykey(String mykey) {
+		this.mykey = mykey;
+	}
+	public String mykey;
 	
 }
